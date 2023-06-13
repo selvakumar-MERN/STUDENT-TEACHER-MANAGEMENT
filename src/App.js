@@ -10,7 +10,7 @@ import Dashboard from './Components/Dashboard/Dashboard';
 import Stafflist from './Components/Officestaffdetails/Stafflist';
 import Addstaff from './Components/Officestaffdetails/Addstaff';
 import Editstaffprofile from './Components/Officestaffdetails/Editstaffprofile';
-import Sidebar from './Components/Sidebar/Sidebar';
+
 
 function App() {
   const users=[{
