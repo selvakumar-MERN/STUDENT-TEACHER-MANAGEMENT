@@ -3,8 +3,11 @@ import Navbar from '../Navbar/Navbar';
 import Sidebar from '../Sidebar/Sidebar';
 import Barchart from '../Chart/Barchart';
 import Footer from '../Footer/Footer';
+import { useContext } from 'react';
+import Mycontext from '../../Mycontext';
 
-function Dashboard(props) {
+function Dashboard() {
+    const{totalstaff,totalstudent,totalteacher}=useContext(Mycontext)
     return (
         <div id='wrapper'>
             <Sidebar/>
@@ -38,7 +41,7 @@ function Dashboard(props) {
                             <div className="col mr-2">
                                 <div className="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                     Total Students</div>
-                                <div className="h5 mb-0 font-weight-bold text-gray-800">{props.studentlist}</div>
+                                <div className="h5 mb-0 font-weight-bold text-gray-800">{totalstudent}</div>
                             </div>
                             <div className="col-auto">
                             <i className="fas fa-user fa-2x text-gray-300"></i>
@@ -56,7 +59,7 @@ function Dashboard(props) {
                             <div className="col mr-2">
                                 <div className="text-xs font-weight-bold text-success text-uppercase mb-1">
                                     Total Teachers</div>
-                                <div className="h5 mb-0 font-weight-bold text-gray-800">{props.teacherList}</div>
+                                <div className="h5 mb-0 font-weight-bold text-gray-800">{totalteacher}</div>
                             </div>
                             <div className="col-auto">
                                 <i className="fas fa-user fa-2x text-gray-300"></i>
@@ -74,7 +77,7 @@ function Dashboard(props) {
                             <div className="col mr-2">
                                 <div className="text-xs font-weight-bold text-success text-uppercase mb-1">
                                     Total </div>
-                                <div className="h5 mb-0 font-weight-bold text-gray-800">{props.teacherList+props.studentlist}</div>
+                                <div className="h5 mb-0 font-weight-bold text-gray-800">{totalteacher+totalstudent}</div>
                             </div>
                             <div className="col-auto">
                             <i className="fas fa-users fa-2x text-gray-300"></i>
@@ -93,7 +96,7 @@ function Dashboard(props) {
                             <div className="col mr-2">
                                 <div className="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                     Office Staffs</div>
-                                <div className="h5 mb-0 font-weight-bold text-gray-800">5</div>
+                                <div className="h5 mb-0 font-weight-bold text-gray-800">{totalstaff}</div>
                             </div>
                             <div className="col-auto">
                                 <i className="fas fa-user-circle fa-2x text-gray-300"></i>
@@ -129,7 +132,7 @@ function Dashboard(props) {
                     </div>
                     {/* Card Body */}
                     <div className="card-body">
-                        <Barchart studentlength={props.studentlist} teacherlength={props.teacherList}stafflength={props.staffList}/>
+                        <Barchart studentlength={totalstudent} teacherlength={totalteacher}stafflength={totalstaff}/>
                     </div>
                 </div>
             </div>
