@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Navbar from '../Navbar/Navbar';
 import Sidebar from '../Sidebar/Sidebar';
 import { Link } from 'react-router-dom';
 import Footer from '../Footer/Footer';
+import Mycontext from '../../Mycontext';
 
-function Teacherlist(props) {
-
+function Teacherlist() {
+    const {teacherList,editTeacher,deleteTeacher}= useContext(Mycontext)
     return (
         <div id='wrapper'>
             <Sidebar />
@@ -41,7 +42,7 @@ function Teacherlist(props) {
                                 </tr>
                             </thead>
                             <tbody>
-                                {props.teacherList.map((items) => {
+                                {teacherList.map((items) => {
                                     return (
                                         <tr className='text-center'>
                                             <td>{items.teacher_id}</td>
@@ -54,9 +55,9 @@ function Teacherlist(props) {
                                             <td>{items.state}</td>
                                             <td>
                                                 <Link to="/editteacherprofile">
-                                                    <button className='btn btn-primary ' onClick={() => { props.editTeacher(items) }}  >Edit</button>
+                                                    <button className='btn btn-primary ' onClick={() => { editTeacher(items) }}  >Edit</button>
                                                 </Link>
-                                                <button className='btn btn-danger mx-2' onClick={() => { props.deleteTeacher(items) }} >Delete</button>
+                                                <button className='btn btn-danger mx-2' onClick={() => { deleteTeacher(items) }} >Delete</button>
                                             </td>
                                         </tr>
                                     )
