@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Sidebar from '../Sidebar/Sidebar';
 import Navbar from '../Navbar/Navbar';
 import { Link } from 'react-router-dom';
 import Footer from '../Footer/Footer';
 import { ToastContainer, toast } from 'react-toastify';
+import Mycontext from '../../Mycontext';
 
-function Editteacherprofile(props) {
+function Editteacherprofile() {
   const notify = () => toast("Profile Updated"); 
-  const [user, setuser] = useState(props.editTeach)
+  const{editTeach,updateTeacher}=useContext(Mycontext)
+  const [user, setuser] = useState(editTeach)
 
   const handler = (e) => {
     const { name, value } = e.target
@@ -16,7 +18,7 @@ function Editteacherprofile(props) {
   }
   const update = (e) => {
     e.preventDefault()
-    props.updateTeacher(user)
+    updateTeacher(user)
   }
   return (
     <div id='wrapper'>
