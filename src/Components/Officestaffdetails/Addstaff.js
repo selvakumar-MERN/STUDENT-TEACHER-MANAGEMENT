@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Sidebar from '../Sidebar/Sidebar';
 import Navbar from '../Navbar/Navbar';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Footer from '../Footer/Footer';
+import Mycontext from '../../Mycontext';
 
-function Addstaff(props) {
+function Addstaff() {
   const notify = () => toast("Staff Added");
   const initialusers = {
     staff_id: "",
@@ -20,7 +21,7 @@ function Addstaff(props) {
 
   }
   const [users, setusers] = useState(initialusers)
-
+  const {addStaff}=useContext(Mycontext)
   const handler = (e) => {
     const { name, value } = e.target
     setusers({ ...users, [name]: value })
@@ -28,7 +29,7 @@ function Addstaff(props) {
 
   const submit = (e) => {
     e.preventDefault()
-   props.addStaff(users)
+   addStaff(users)
   }
 
   return (
