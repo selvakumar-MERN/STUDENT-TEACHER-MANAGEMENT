@@ -1,18 +1,20 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Sidebar from '../Sidebar/Sidebar';
 import Navbar from '../Navbar/Navbar';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Footer from '../Footer/Footer';
+import Mycontext from '../../Mycontext';
 
-function Addstudent (props) {
+
+function Addstudent () {
     const notify = () => toast("Student Added");
     const initialusers={
     rollno:"",
     name:"",
     father_name:"",
     gender:"",
-    className:"",
+    class:"",
     address:"",
     city:"",
     state:"",
@@ -20,7 +22,7 @@ function Addstudent (props) {
 
     }
     const [users,setusers]=useState(initialusers)
-   
+    const{addStudent}=useContext(Mycontext)
     const handler=(e)=>{
          const {name,value}=e.target
          setusers({...users,[name]:value})
@@ -29,7 +31,7 @@ function Addstudent (props) {
    
     const submit=(e)=>{
         e.preventDefault()
-       props.addStudent(users)
+       addStudent(users)
     }
     
 return ( 
@@ -72,7 +74,7 @@ return (
                       </div>
                         <div className="form-group col-md-6">
                       <label for="inputPassword4">className</label>
-                      <input type="number" className="form-control" id="inputclassName" name='className' onChange={handler} placeholder="className"></input>
+                      <input type="number" className="form-control" id="inputclassName" name='class' onChange={handler} placeholder="className"></input>
                         </div>
                         </div>
                         <div className="form-group">
