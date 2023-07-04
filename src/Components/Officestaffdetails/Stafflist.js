@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Navbar from '../Navbar/Navbar';
 import Sidebar from '../Sidebar/Sidebar';
 import { Link } from 'react-router-dom';
 import Footer from '../Footer/Footer';
+import Mycontext from '../../Mycontext';
 
-function Stafflist(props) {
+function Stafflist() {
+    const {staffList,editStaff,deleteStaff}=useContext(Mycontext)
     return (
         <div id='wrapper'>
             <Sidebar />
@@ -40,7 +42,7 @@ function Stafflist(props) {
                                 </tr>
                             </thead>
                             <tbody>
-                                {props.staffList.map((items) => {
+                                {staffList.map((items) => {
                                     return (
                                         <tr className='text-center'>
                                             <td>{items.staff_id}</td>
@@ -53,9 +55,9 @@ function Stafflist(props) {
                                             <td>{items.state}</td>
                                             <td>
                                                 <Link to="/editstaffprofile">
-                                                    <button className='btn btn-primary ' onClick={() => props.editStaff(items)}  >Edit</button>
+                                                    <button className='btn btn-primary ' onClick={() => editStaff(items)}  >Edit</button>
                                                 </Link>
-                                                <button className='btn btn-danger mx-2' onClick={() => props.deleteStaff(items)}>Delete</button>
+                                                <button className='btn btn-danger mx-2' onClick={() => deleteStaff(items)}>Delete</button>
                                             </td>
                                         </tr>
                                     )
